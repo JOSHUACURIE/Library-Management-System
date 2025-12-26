@@ -1,0 +1,7 @@
+Name: Joshua Juma
+Admission Number: 6992
+Form: 4
+Gender: Male
+Stream : Manager
+Password: 1323
+--------------------------

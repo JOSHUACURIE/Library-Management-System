@@ -1,0 +1,12 @@
+Title: Things fall Apart
+Author: Chinua Achebe
+ISBN: abd123
+---------------
+Title: 48 laws of power
+Author: Robert Greene
+ISBN: abc234
+---------------
+Title: Not Yet Uhuru
+Author: Jaramogi Oginga Odinga
+ISBN: abnc123
+---------------

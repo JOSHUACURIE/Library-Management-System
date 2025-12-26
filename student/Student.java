@@ -9,7 +9,7 @@ Scanner input =new Scanner(System.in);
 
     public void enroll(){
         try{
-        FileWriter writer=new FileWriter("student.txt",true);
+        FileWriter writer=new FileWriter("student/student.txt",true);
         System.out.println("Enter your Name: ");
             Name=input.nextLine();
           writer.write("Name: "+Name +"\n");
