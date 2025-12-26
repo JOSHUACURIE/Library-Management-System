@@ -1,10 +1,10 @@
 package library;
 
 public interface Library {
-void Supply();
+void supplyBooks();
 void borrow();
-void Return();
-void Count();
+void returnBooks();
+void countBooks();
 void addBooks();
 void deleteBooks();    
 void libraryMenu();

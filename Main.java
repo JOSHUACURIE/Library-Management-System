@@ -1,8 +1,9 @@
-import admin.Admin;
-public class Main extends  Admin {
+
+import student.Student;
+public class Main extends  Student{
 public static void main(String[] args) {
-    Admin jj=new Admin();
-    jj.libraryMenu();
+   Student jj=new Student();
+   jj.welcomeMenu();
 }
 
      

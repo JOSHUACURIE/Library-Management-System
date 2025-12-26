@@ -20,18 +20,18 @@ public void borrow() {
 
 
 @Override
-public void Return() {
+public void returnBooks() {
    
     
 }
 
 @Override
-public void Count() {
+public void countBooks() {
    
     
 }
 @Override
-public void Supply() {
+public void supplyBooks() {
    
     
 }
@@ -45,7 +45,7 @@ public void deleteBooks() {
 public void libraryMenu() {
   System.out.println("Welcome to Leraa Library");
   System.out.println("Who are you? Student or Admin");
-  
+
   System.out.println("1.Add Books\n2.Book Supplies\n3.Book Returning\n4.Count Books\n5.Delete Books\n6.Book Borrowing");
   System.out.print("What do you want to do?: ");
   int choice=input.nextInt();
@@ -56,13 +56,13 @@ switch (choice) {
       addBooks();
        break;
     case 2:
-      Supply();
+      supplyBooks();
        break;
     case 3:
-      Return();
+      returnBooks();
        break;
     case 4:
-     Count();
+     countBooks();
        break;
     case 5:
       deleteBooks();
