@@ -1,9 +1,9 @@
-import student.StudentManager;
+import admin.AdminManager;
 
 public class Main {
 
    public static void main(String[] args) {
-      StudentManager jj=new StudentManager();
-      jj.welcomeMenu();
+      AdminManager jj=new AdminManager();
+      jj.createAdmin();
    }
 }

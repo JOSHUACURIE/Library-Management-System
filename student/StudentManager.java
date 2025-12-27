@@ -122,6 +122,13 @@ public class StudentManager {
         System.out.println("3. New Arrivals");
         System.out.println("4. Complains & Suggestions");
         System.out.println("5. Send Reviews");
+
+        int choice=input.nextInt();
+        input.nextLine();
+
+        if(choice==1){
+        
+        }
     }
 
     public void welcomeMenu() {
@@ -139,4 +146,10 @@ public class StudentManager {
             System.out.println("Invalid choice.");
         }
     }
+
+    public void borrowedBooks(){}
+    public void myCharges(){}
+    public void newArrivals(){}
+    public void sendSuggestions(){}
+    public void sendReviews(){}
 }

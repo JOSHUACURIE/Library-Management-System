@@ -1,79 +1,47 @@
 package admin;
 import java.util.*;
 
-import library.Library;
- public class Admin implements Library{
-  Scanner input=new Scanner(System.in);
-  
-    @Override
-    public void addBooks() {
-        System.out.println("Which book do you want to borrow");
-        
-    }
-@Override
-public void borrow() {
-  
+public class Admin {
+
+    private String name;
+    private String workno;
+    private String role;
+    private String password;
+    
     
 
-    
+public Admin(String n,String w,String p,String r){
+    this.name=n;
+    this.workno=w;
+    this.password=p;
+    this.role=r;
+
 }
 
 
-@Override
-public void returnBooks() {
-   
-    
-}
+//getters
+public String getName(){return name;}
+public String getWorkNo(){return workno;}
+public String getPassword(){return password;}
 
 @Override
-public void countBooks() {
-   
-    
-}
-@Override
-public void supplyBooks() {
-   
-    
-}
-@Override
-public void deleteBooks() {
-  
-    
+public boolean equals(Object o){
+
+  if(this==o)return true;
+  if(!(o instanceof Admin)) return false;
+  Admin admin=(Admin) o;
+  return role==admin.role;
+
 }
 
 @Override
-public void libraryMenu() {
-  System.out.println("Welcome to Leraa Library");
-  System.out.println("Who are you? Student or Admin");
-
-  System.out.println("1.Add Books\n2.Book Supplies\n3.Book Returning\n4.Count Books\n5.Delete Books\n6.Book Borrowing");
-  System.out.print("What do you want to do?: ");
-  int choice=input.nextInt();
-
-
-switch (choice) {
-    case 1:
-      addBooks();
-       break;
-    case 2:
-      supplyBooks();
-       break;
-    case 3:
-      returnBooks();
-       break;
-    case 4:
-     countBooks();
-       break;
-    case 5:
-      deleteBooks();
-      break;
-    case 6:
-      borrow();
-      break;
-    default:
-    System.out.println("Not available");
-        break;
+public int hashCode(){
+  return Objects.hash(role);
 }
 
+@Override
+public String toString(){
+  return name+","+role+","+workno+","+password;
 }
+
 }
