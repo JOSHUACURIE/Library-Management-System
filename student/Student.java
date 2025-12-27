@@ -1,52 +1,73 @@
 package student;
 import java.util.*;
+
+import books.Book;
+
 import java.io.FileWriter;
+import java.util.*;
 import java.io.IOException;
+import java.io.BufferedWriter;
 public class Student {
     String Name,gender,stream;
     int regNo,form,password;
+
+
+
+    public Student(String Name, String gender, String stream,int regNo,int form,int password) {
+        this.Name=Name;
+        this.gender=gender;
+        this.stream=stream;
+        this.regNo=regNo;
+        this.form=form;
+        this.password=password;
+
+    }
+
+private Set<Student> students=new HashSet<>();
 Scanner input =new Scanner(System.in);
 
     public void enroll(){
-        try{
-        FileWriter writer=new FileWriter("student/student.txt",true);
-        System.out.println("Enter your Name: ");
-            Name=input.nextLine();
-          writer.write("Name: "+Name +"\n");
-        
-        System.out.println("Enter Your registration number: ");
-            regNo=input.nextInt();
-            input.nextLine();
-         writer.write("Admission Number: " +regNo+"\n");
-        
-        System.out.println("Enter you form: ");
-            form=input.nextInt();
-            input.nextLine();
-         writer.write("Form: "+form+"\n");
+        try(BufferedWriter bw=new BufferedWriter(new FileWriter("/students/students.txt")) ){
 
-        System.out.println("What is your gender: ");
-            gender=input.nextLine();
-         writer.write("Gender: "+gender+"\n");
-        
-        System.out.println("Enter you stream: ");
-            stream=input.nextLine();
-        writer.write("Stream : "+stream+"\n");
+      System.out.print("How many students do you want to add? ");
+    int count = input.nextInt();
+    input.nextLine();
 
-        System.out.println("Finally Enter your password: ");
-           password=input.nextInt();
-           input.nextLine();     
+    for (int i = 1; i <= count; i++) {
+        System.out.println("Enter details of book " + i);
 
-        writer.write("Password: "+password+"\n");
-        writer.write("--------------------------\n");
-        System.out.println("Congratulations You have succesfully created your account");
+        System.out.print("Title: ");
+        String title = input.nextLine();
 
-         writer.close();
-        }catch(IOException e){
-            e.printStackTrace();
-            System.out.println("An error has occured.If the issue persists contact the admin");
+        System.out.print("Author: ");
+        String author = input.nextLine();
+
+        System.out.print("ISBN: ");
+        String isbn = input.nextLine();
+
+        Student student = new Student(Name,gender,stream,regNo,form,password);
+
+        if (students.add(student)) {
+            saveStudentToFile(student);
+            System.out.println("Book added");
+        } else {
+            System.out.println("Duplicate book (ISBN exists)");
         }
     }
 
+ }catch(IOException e){
+            e.printStackTrace();
+            System.out.println("An error has occured");
+        }
+    }
+private void saveStudentToFile(Student student) {
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter("students/students.txt", true))) {
+        bw.write(student.toString());
+        bw.newLine();
+    } catch (IOException e) {
+        System.out.println("Error saving book");
+    }
+}
 
     void login(){
         System.out.println("Enter your name: ");
