@@ -1,12 +1,9 @@
-import books.BookManager;
+import student.StudentManager;
 
-public class Main extends  BookManager{
-public static void main(String[] args) {
-   
-   BookManager jj=new BookManager();
-   jj.addBooks();
+public class Main {
 
-}
-
-     
+   public static void main(String[] args) {
+      StudentManager jj=new StudentManager();
+      jj.welcomeMenu();
+   }
 }

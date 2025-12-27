@@ -1,110 +1,50 @@
 package student;
-import java.util.*;
 
-import books.Book;
+import java.util.Objects;
 
-import java.io.FileWriter;
-import java.util.*;
-import java.io.IOException;
-import java.io.BufferedWriter;
 public class Student {
-    String Name,gender,stream;
-    int regNo,form,password;
 
+    private String name;
+    private String gender;
+    private String stream;
+    private String password;
+    private int regNo;
+    private int form;
 
-
-    public Student(String Name, String gender, String stream,int regNo,int form,int password) {
-        this.Name=Name;
-        this.gender=gender;
-        this.stream=stream;
-        this.regNo=regNo;
-        this.form=form;
-        this.password=password;
-
+    public Student(String name, String gender, String stream,
+                   int regNo, int form, String password) {
+        this.name = name;
+        this.gender = gender;
+        this.stream = stream;
+        this.regNo = regNo;
+        this.form = form;
+        this.password = password;
     }
 
-private Set<Student> students=new HashSet<>();
-Scanner input =new Scanner(System.in);
+    // Getters
+    public String getName() { return name; }
+    public String getGender() { return gender; }
+    public String getStream() { return stream; }
+    public String getPassword() { return password; }
+    public int getRegNo() { return regNo; }
+    public int getForm() { return form; }
 
-    public void enroll(){
-        try(BufferedWriter bw=new BufferedWriter(new FileWriter("/students/students.txt")) ){
-
-      System.out.print("How many students do you want to add? ");
-    int count = input.nextInt();
-    input.nextLine();
-
-    for (int i = 1; i <= count; i++) {
-        System.out.println("Enter details of book " + i);
-
-        System.out.print("Title: ");
-        String title = input.nextLine();
-
-        System.out.print("Author: ");
-        String author = input.nextLine();
-
-        System.out.print("ISBN: ");
-        String isbn = input.nextLine();
-
-        Student student = new Student(Name,gender,stream,regNo,form,password);
-
-        if (students.add(student)) {
-            saveStudentToFile(student);
-            System.out.println("Book added");
-        } else {
-            System.out.println("Duplicate book (ISBN exists)");
-        }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student)) return false;
+        Student student = (Student) o;
+        return regNo == student.regNo;
     }
 
- }catch(IOException e){
-            e.printStackTrace();
-            System.out.println("An error has occured");
-        }
-    }
-private void saveStudentToFile(Student student) {
-    try (BufferedWriter bw = new BufferedWriter(new FileWriter("students/students.txt", true))) {
-        bw.write(student.toString());
-        bw.newLine();
-    } catch (IOException e) {
-        System.out.println("Error saving book");
-    }
-}
-
-    void login(){
-        System.out.println("Enter your name: ");
-        String name=input.nextLine();
-        System.out.println("Enter your password: ");
-        int pass=input.nextInt();
-        input.nextLine();
-        if(name!=Name &&  pass!=password){
-            System.out.println("Wrong credentials");
-        }else{
-            studentMenu();
-        }
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(regNo);
     }
 
-
-
-
-
-    void borrowedBooks(){}
-    void viewCharges(){}
-    void newArrivals(){}
-    void sendSuggestions(){}
-    void sendReviews(){}
-   public void welcomeMenu(){
-        System.out.println("Welcome to Leraa Library,We have missed you");
-        System.out.println("1.Login\n2.Create account");
-        int choice=input.nextInt();
-        input.nextLine();
-        if(choice==1){
-            login();
-        } else if(choice==2){
-            enroll();
-        }
-        
-    }
-    void studentMenu(){
-
+    @Override
+    public String toString() {
+        return name + "," + gender + "," + form + "," +
+               stream + "," + regNo + "," + password;
     }
 }
